@@ -1,0 +1,35 @@
+####
+#
+# Dreamy Utilities
+# Copyright (C) (2020) Benedykt Synakiewicz <dreamcobbler@outlook.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+#
+####
+
+#
+#
+#
+# Globals.
+#
+#
+#
+
+ApplicationName = "Dreamy Utilities"
+ApplicationVersion = "1.0.0a1"
+ApplicationShortDescription = "A collection of various utilities. "
+ApplicationURL = "https://github.com/DreamCobbler/dreamy-utilities"
+
+CreatorName = "Benedykt Synakiewicz"
+CreatorContact = "dreamcobbler@outlook.com"
