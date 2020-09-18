@@ -28,12 +28,14 @@
 
 # Standard packages.
 
+from datetime import date
 from typing import Any
 
 # Non-standard packages.
 
 from babel.dates import format_date
 from babel.numbers import format_number
+import numpy
 
 #
 #
@@ -61,6 +63,27 @@ ValidRomanNumeralCharacters = [
 #
 #
 
+def Bytify(value: Any) -> bytes:
+
+    ##
+    #
+    # Converts any value to bytes.
+    #
+    # @param value The data to be bytified.
+    #
+    # @return Bytified input value.
+    #
+    ##
+
+    if value is None:
+        return b""
+
+    elif isinstance(value, bytes):
+        return value
+
+    else:
+        return bytes(value, encoding = "utf-8")
+
 def FillTemplate(values: Any, template: str) -> str:
 
     ##
@@ -85,6 +108,79 @@ def FillTemplate(values: Any, template: str) -> str:
         )
 
     return template
+
+def GetCurrentDate() -> str:
+
+    ##
+    #
+    # Returns today's date, in ISO 8601 format (YYYY-MM-DD).
+    #
+    # @return Today's date.
+    #
+    ##
+
+    return date.today().isoformat()
+
+def GetDateFromTimestamp(timestamp: str) -> str:
+
+    ##
+    #
+    # Converts Unix timestamp to ISO 8601 date.
+    #
+    # @param timestamp The input timestamp.
+    #
+    # @return The input date converted to ISO 8601 date format (YYYY-MM-DD).
+    #
+    ##
+
+    return date.fromtimestamp(timestamp).isoformat()
+
+def GetLevenshteinDistance(firstString: str, secondString: str) -> int:
+
+    ##
+    #
+    # Calculates the Levenshtein distance between a pair of strings.
+    #
+    # @param firstString  The first string.
+    # @param secondString The second string.
+    #
+    # @return The distance between the two strings.
+    #
+    ##
+
+    if (not firstString) or (not secondString):
+        return 0
+
+    sizeH = len(firstString) + 1
+    sizeV = len(secondString) + 1
+
+    matrix = numpy.zeros((sizeH, sizeV))
+    for x in range(sizeH):
+        matrix[x, 0] = x
+    for y in range(sizeV):
+        matrix[0, y] = y
+
+    for x in range(1, sizeH):
+
+        for y in range(1, sizeV):
+
+            if firstString[x - 1] == secondString[y - 1]:
+
+                matrix[x, y] = min(
+                    matrix[x - 1, y    ] + 1,
+                    matrix[x - 1, y - 1]    ,
+                    matrix[x    , y - 1] + 1
+                )
+
+            else:
+
+                matrix[x, y] = min(
+                    matrix[x - 1, y    ] + 1,
+                    matrix[x - 1, y - 1] + 1,
+                    matrix[x    , y - 1] + 1
+                )
+
+    return matrix[sizeH - 1, sizeV - 1]
 
 def IsRomanNumeral(text: str) -> bool:
 
