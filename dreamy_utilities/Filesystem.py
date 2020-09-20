@@ -29,6 +29,7 @@
 # Standard packages.
 
 from pathlib import Path
+import shutil
 from string import ascii_letters, digits
 import sys
 from typing import List, Optional, Union
@@ -56,6 +57,24 @@ def AddToPATH(path: Union[str, Path]) -> None:
         return
 
     sys.path.insert(0, str(path))
+
+def CopyTree(sourceDirectoryPath: Path, destinationDirectoryPath: Path) -> None:
+
+    ##
+    #
+    # Copies a directory, along with its contents.
+    #
+    # @param sourceDirectoryPath      The directory to be copied.
+    # @param destinationDirectoryPath The directory in which the copy will be placed.
+    #
+    ##
+
+    if not sourceDirectoryPath.is_dir():
+        return
+
+    destinationDirectoryPath.parent.mkdir(parents = True, exist_ok = True)
+
+    shutil.copytree(sourceDirectoryPath, destinationDirectoryPath)
 
 def FindFiles(
     directoryPath: Optional[Union[str, Path]] = None,
