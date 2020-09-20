@@ -28,13 +28,13 @@
 
 # Standard packages.
 
-from datetime import date
+from datetime import date, datetime
 from typing import Any
 
 # Non-standard packages.
 
 from babel.dates import format_date
-from babel.numbers import format_number
+from babel.numbers import format_decimal
 import numpy
 
 #
@@ -148,7 +148,7 @@ def GetLevenshteinDistance(firstString: str, secondString: str) -> int:
     #
     ##
 
-    if (not firstString) or (not secondString):
+    if (not firstString) and (not secondString):
         return 0
 
     sizeH = len(firstString) + 1
@@ -194,7 +194,7 @@ def IsRomanNumeral(text: str) -> bool:
     #
     ##
 
-    if any(x not in ValidRomanNumeralCharacters for x in text.strip()):
+    if (not text) or any(x not in ValidRomanNumeralCharacters for x in text.strip()):
         return False
 
     return True
@@ -245,24 +245,26 @@ def PrettifyDate(
 
 def PrettifyNumber(
     number: int,
-    locale: str = "en"
+    locale: str = "en",
+    isZeroSpecial: bool = False
 ) -> str:
 
     ##
     #
     # Returns a nicely formatted number.
     #
-    # @param number The input number.
-    # @param locale The locale to be used for formatting.
+    # @param number        The input number.
+    # @param locale        The locale to be used for formatting.
+    # @param isZeroSpecial Should we replace zero with a question mark (0 -> "?")?
     #
     # @return Prettified input number.
     #
     ##
 
-    if 0 == number:
+    if (0 == number) and isZeroSpecial:
         return "?"
 
-    return format_number(
+    return format_decimal(
         number,
         locale = locale
     )
