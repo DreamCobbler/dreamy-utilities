@@ -101,7 +101,7 @@ def FindFiles(
     # Find all files in the directory.
 
     searchExpression = "**/*" if recursive else "*"
-    filePaths = [x for x in path.glob(searchExpression) if x.is_file()]
+    filePaths = [x for x in directoryPath.glob(searchExpression) if x.is_file()]
 
     # Process suffixes (make them all lowercase), then use them to filter the list of file paths.
 
