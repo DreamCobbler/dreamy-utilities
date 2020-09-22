@@ -38,6 +38,16 @@ from uuid import uuid4
 #
 #
 #
+# Constants.
+#
+#
+#
+
+VALID_FILE_NAME_CHARACTERS = f"-',_.()[] {ascii_letters}{digits}"
+
+#
+#
+#
 # Functions.
 #
 #
@@ -126,9 +136,7 @@ def GetSanitizedFileName(string: str) -> str:
     #
     ##
 
-    ValidFileNameCharacters = f"-',_.()[] {ascii_letters}{digits}"
-
-    return "".join(x for x in string if x in ValidFileNameCharacters)
+    return "".join(x for x in string if x in VALID_FILE_NAME_CHARACTERS)
 
 def GetUniqueFileName() -> str:
 
