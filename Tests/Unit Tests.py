@@ -34,10 +34,13 @@ sys.path.insert(0, "../")
 
 # Application.
 
+import dreamy_utilities.Filesystem
+import dreamy_utilities.Mathematics
 import dreamy_utilities.Text
 
 # Standard packages.
 
+from pathlib import Path
 import unittest
 
 #
@@ -48,7 +51,60 @@ import unittest
 #
 #
 
+class TestFilesystem(unittest.TestCase):
+
+    def test_FindFiles(self):
+
+        self.assertEqual(
+            dreamy_utilities.Filesystem.FindFiles("./Environment/"),
+            [
+                Path("Environment/ABC.txt"),
+                Path("Environment/A/1.txt"),
+                Path("Environment/A/B/2.sql"),
+            ]
+        )
+
+        self.assertEqual(
+            dreamy_utilities.Filesystem.FindFiles("./Environment/", recursive = False),
+            [
+                Path("Environment/ABC.txt"),
+            ]
+        )
+
+        self.assertEqual(
+            dreamy_utilities.Filesystem.FindFiles("./Environment/", suffixes = [".sql"]),
+            [
+                Path("Environment/A/B/2.sql"),
+            ]
+        )
+
+class TestMathematics(unittest.TestCase):
+
+    def test_GetDimensionsToFit(self):
+
+        self.assertEqual(
+            dreamy_utilities.Mathematics.GetDimensionsToFit((300, 300), (1920, 1080)),
+            (1080, 1080)
+        )
+
 class TestText(unittest.TestCase):
+
+    def test_Bytify(self):
+
+        self.assertEqual(
+            dreamy_utilities.Text.Bytify("Test."),
+            b"Test."
+        )
+
+    def test_FillTemplate(self):
+
+        self.assertEqual(
+            dreamy_utilities.Text.FillTemplate(
+                {"Name": "Ben", "Species": "Human"},
+                "My name is @@@Name@@@. I'm a @@@Species@@@."
+            ),
+            "My name is Ben. I'm a Human."
+        )
 
     def test_GetDateFromTimestamp(self):
 
