@@ -58,6 +58,9 @@ setup(
     url = Configuration.ApplicationURL,
 
     install_requires = [
+
+        "colorama",
+
     ],
 
     packages = find_packages(),

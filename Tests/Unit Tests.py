@@ -34,6 +34,7 @@ sys.path.insert(0, "../")
 
 # Application.
 
+import dreamy_utilities.Containers
 import dreamy_utilities.Filesystem
 import dreamy_utilities.Mathematics
 import dreamy_utilities.Text
@@ -50,6 +51,15 @@ import unittest
 #
 #
 #
+
+class TestContainers(unittest.TestCase):
+
+    def test_RemoveDuplicates(self):
+
+        self.assertEqual(
+            dreamy_utilities.Containers.RemoveDuplicates(["a", "a", "b", "d", "c", "c", "d", "d"]),
+            ["a", "b", "d", "c"]
+        )
 
 class TestFilesystem(unittest.TestCase):
 
