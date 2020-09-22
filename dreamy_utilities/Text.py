@@ -99,13 +99,11 @@ def FillTemplate(values: Any, template: str) -> str:
     #
     ##
 
-    availableValues = [x for x in vars(values) if not x.startswith("_")]
+    valuesDictionary = vars(values) if not isinstance(values, dict) else values
+    availableValues = [x for x in valuesDictionary if not x.startswith("_")]
 
     for value in availableValues:
-        template = template.replace(
-            f"@@@{value}@@@",
-            Stringify(getattr(values, value))
-        )
+        template = template.replace(f"@@@{value}@@@", str(valuesDictionary[value]))
 
     return template
 
