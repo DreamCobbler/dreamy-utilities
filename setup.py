@@ -59,7 +59,10 @@ setup(
 
     install_requires = [
 
+        "babel",
+        "bs4",
         "colorama",
+        "numpy",
 
     ],
 

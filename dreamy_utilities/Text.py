@@ -291,7 +291,7 @@ def Stringify(value: Any) -> str:
     else:
         return str(value)
 
-def Truncate(string: str, length: int) -> str:
+def Truncate(string: str, length: int, suffix: str = "…") -> str:
 
     ##
     #
@@ -299,6 +299,7 @@ def Truncate(string: str, length: int) -> str:
     #
     # @param string The string to be truncated.
     # @param length Maximum length of the output string.
+    # @param suffix The suffix of the output string.
     #
     # @return The truncated string.
     #
@@ -307,4 +308,23 @@ def Truncate(string: str, length: int) -> str:
     if len(string) <= length:
         return string
 
-    return string[:length - 1].rstrip() + "…"
+    return string[:length - len(suffix)].rstrip() + suffix
+
+def TruncateByWords(string: str, length: int, suffix: str = "…") -> str:
+
+    ##
+    #
+    # Truncates a string to given length while trying to avoid cutting words in the middle.
+    #
+    # @param string The string to be truncated.
+    # @param length Maximum length of the output string.
+    # @param suffix The suffix of the output string.
+    #
+    # @return The truncated string.
+    #
+    ##
+
+    if len(string) <= length:
+        return string
+
+    return string[:length - len(suffix)].rsplit(" ", 1)[0] + suffix

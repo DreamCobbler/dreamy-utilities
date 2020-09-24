@@ -28,6 +28,7 @@
 
 # Standard packages.
 
+import os
 from pathlib import Path
 import shutil
 from string import ascii_letters, digits
@@ -179,6 +180,21 @@ def ReadTextFile(filePath: Union[str, Path]) -> Optional[str]:
     except OSError:
 
         return None
+
+def RemoveEmptyDirectories(directoryPath: Path) -> None:
+
+    ##
+    #
+    # Removes all empty subdirectories within given directory.
+    #
+    # @param directoryPath The directory.
+    #
+    ##
+
+    for path in [x for x in directoryPath.glob("*") if x.is_dir()]:
+
+        if not len(os.listdir(path)):
+            shutil.rmtree(path)
 
 def WriteTextFile(filePath: Union[str, Path], content: str) -> bool:
 
