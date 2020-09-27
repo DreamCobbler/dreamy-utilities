@@ -38,6 +38,7 @@ import dreamy_utilities.Containers
 import dreamy_utilities.Filesystem
 import dreamy_utilities.Mathematics
 import dreamy_utilities.Text
+import dreamy_utilities.Web
 
 # Standard packages.
 
@@ -286,6 +287,24 @@ class TestText(unittest.TestCase):
             dreamy_utilities.Text.Truncate("Lorem ipsum dolor sit amet", 14),
             "Lorem ipsum d…"
         )
+
+class TestWeb(unittest.TestCase):
+
+    def test_GetHostname(self):
+
+        self.assertEqual(
+            dreamy_utilities.Web.GetHostname(self._TEST_URL),
+            "spacebattles.com"
+        )
+
+    def test_GetSiteURL(self):
+
+        self.assertEqual(
+            dreamy_utilities.Web.GetSiteURL(self._TEST_URL),
+            "https://forums.spacebattles.com"
+        )
+
+    _TEST_URL = "https://forums.spacebattles.com/threads/star-wars-a-penumbral-path.814685"
 
 #
 #
