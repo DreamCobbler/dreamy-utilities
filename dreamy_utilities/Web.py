@@ -32,7 +32,7 @@ from dreamy_utilities.Text import Stringify
 
 # Standard packages.
 
-from requests import Session
+from requests import get, Session
 from typing import Optional
 from urllib.parse import urlparse
 
@@ -65,7 +65,7 @@ def DownloadPage(URL: str, session: Optional[Session] = None) -> Optional[str]:
     if not URL:
         return None
 
-    response = session.get(URL) if session else requests.get(URL)
+    response = session.get(URL) if session else get(URL)
     if not response:
         return None
 
