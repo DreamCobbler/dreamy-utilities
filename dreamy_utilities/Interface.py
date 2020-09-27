@@ -218,7 +218,7 @@ class Interface:
         total: int,
         length: int,
         description: str,
-        clearLine: bool
+        clearLine: bool = True
     ) -> None:
 
         ##
