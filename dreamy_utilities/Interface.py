@@ -196,7 +196,7 @@ class Interface:
         #
         ##
 
-        print("\r", end = "\n")
+        print("\r", end = "")
 
     def LineBreak(self) -> None:
 
