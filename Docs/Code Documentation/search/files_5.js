@@ -1,0 +1,4 @@
+var searchData=
+[
+  ['text_2epy_78',['Text.py',['../_text_8py.html',1,'']]]
+];
