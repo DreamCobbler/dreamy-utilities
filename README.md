@@ -2,7 +2,7 @@
 
 A set of various utilities for [Python](https://www.python.org/) applications.
 
-I've found myself copy-pasting the same functions over and over again in my Python projects, so I've decided to make a library out of them. **Dreamy Utilities** are extensively used by **[fiction-dl](https://github.com/DreamCobbler/fiction-dl)** 1.6.0; when this version of the application will be published, I'll post the utilities on PyPy.
+I've found myself copy-pasting the same functions over and over again in my Python projects, and so I've decided to make a library out of them. **Dreamy Utilities** are extensively used by **[fiction-dl](https://github.com/DreamCobbler/fiction-dl)** 1.6.0; when this version of the application will be published, I'll post the utilities on [PyPI](https://pypi.org/).
 
 ## Documentation
 
