@@ -28,11 +28,12 @@
 
 # Standard packages.
 
-from typing import Optional
+from typing import List, Optional, Tuple
 
 # Non-standard packages.
 
 import colorama
+import termtables
 
 #
 #
@@ -244,6 +245,20 @@ class Interface:
         bar = (filledPart * "█") + (remainingPart * "-")
 
         print(f"{description}: |{bar}|", end = "")
+
+    def Table(
+        self,
+        data: List[List[str]],
+        padding: Tuple[int, int] = (0, 1),
+        alignment: str = "rl"
+    ):
+
+        termtables.print(
+            data,
+            style = termtables.styles.thin,
+            padding = padding,
+            alignment = alignment
+        )
 
     @staticmethod
     def _GetColorMarker(
