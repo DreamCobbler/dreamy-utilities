@@ -63,7 +63,6 @@ setup(
         "bs4",
         "colorama",
         "termtables",
-        "tldextract",
 
     ],
 

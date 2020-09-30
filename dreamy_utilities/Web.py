@@ -34,12 +34,103 @@ from dreamy_utilities.Text import Stringify
 
 from requests import get, Session
 from typing import Optional
-from urllib.parse import urlparse
 
 # Non-standard packages.
 
 from bs4 import BeautifulSoup
-import tldextract
+
+#
+#
+#
+# Classes.
+#
+#
+#
+
+##
+#
+# A parsed URL (one that has been split into parts).
+#
+##
+
+class ParsedURL:
+
+    def __init__(self, URL: str) -> None:
+
+        ##
+        #
+        # The constructor.
+        #
+        # @param URL The URL to be parsed.
+        #
+        ##
+
+        self.Protocol = None
+        self.Subdomain = None
+        self.Domain = None
+        self.Suffix = None
+
+        self._Parse(URL)
+
+    def _Parse(self, URL: str) -> None:
+
+        ##
+        #
+        # Splits the given URL into components.
+        #
+        # @param URL The URL in question.
+        #
+        ##
+
+        if not URL:
+            return
+
+        # Extract the protocol.
+
+        separator = "://"
+        position = URL.find(separator)
+
+        if -1 != position:
+
+            self.Protocol = URL[:position]
+            URL = URL[position + len(separator):]
+
+        else:
+
+            self.Protocol = "http"
+
+        # Remove the trailing part.
+
+        separator = "/"
+        position = URL.find(separator)
+
+        if -1 != position:
+
+            URL = URL[:position]
+
+        # Extract the suffix.
+
+        separator = "."
+        position = URL.rfind(separator)
+
+        if -1 != position:
+
+            self.Suffix = URL[position + len(separator):]
+            URL = URL[:position]
+
+        # Extract the domain.
+
+        separator = "."
+        position = URL.rfind(separator)
+
+        if -1 != position:
+
+            self.Domain = URL[position + len(separator):]
+            URL = URL[:position]
+
+        # Extract the subdomain.
+
+        self.Subdomain = URL
 
 #
 #
@@ -110,9 +201,9 @@ def GetHostname(URL: str) -> str:
     if not URL:
         return URL
 
-    parts = tldextract.extract(URL)
+    parts = ParsedURL(URL)
 
-    return f"{parts.domain}.{parts.suffix}"
+    return f"{parts.Domain}.{parts.Suffix}"
 
 def GetSiteURL(URL: str) -> str:
 
@@ -129,6 +220,6 @@ def GetSiteURL(URL: str) -> str:
     if not URL:
         return URL
 
-    URL = urlparse(URL)
+    parts = ParsedURL(URL)
 
-    return f"{URL.scheme}://{URL.netloc}"
+    return f"{parts.Protocol}://{parts.Subdomain}.{parts.Domain}.{parts.Suffix}"
