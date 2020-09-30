@@ -62,7 +62,6 @@ setup(
         "babel",
         "bs4",
         "colorama",
-        "numpy",
         "termtables",
         "tldextract",
 

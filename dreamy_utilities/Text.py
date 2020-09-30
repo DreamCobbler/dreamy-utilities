@@ -35,7 +35,6 @@ from typing import Any
 
 from babel.dates import format_date
 from babel.numbers import format_decimal
-import numpy
 
 #
 #
@@ -152,11 +151,12 @@ def GetLevenshteinDistance(firstString: str, secondString: str) -> int:
     sizeH = len(firstString) + 1
     sizeV = len(secondString) + 1
 
-    matrix = numpy.zeros((sizeH, sizeV))
+    matrix = [[0 for i in range(sizeV)] for j in range(sizeH)]
+
     for x in range(sizeH):
-        matrix[x, 0] = x
+        matrix[x][0] = x
     for y in range(sizeV):
-        matrix[0, y] = y
+        matrix[0][y] = y
 
     for x in range(1, sizeH):
 
@@ -164,21 +164,21 @@ def GetLevenshteinDistance(firstString: str, secondString: str) -> int:
 
             if firstString[x - 1] == secondString[y - 1]:
 
-                matrix[x, y] = min(
-                    matrix[x - 1, y    ] + 1,
-                    matrix[x - 1, y - 1]    ,
-                    matrix[x    , y - 1] + 1
+                matrix[x][y] = min(
+                    matrix[x - 1][y    ] + 1,
+                    matrix[x - 1][y - 1]    ,
+                    matrix[x    ][y - 1] + 1
                 )
 
             else:
 
-                matrix[x, y] = min(
-                    matrix[x - 1, y    ] + 1,
-                    matrix[x - 1, y - 1] + 1,
-                    matrix[x    , y - 1] + 1
+                matrix[x][y] = min(
+                    matrix[x - 1][y    ] + 1,
+                    matrix[x - 1][y - 1] + 1,
+                    matrix[x    ][y - 1] + 1
                 )
 
-    return matrix[sizeH - 1, sizeV - 1]
+    return matrix[sizeH - 1][sizeV - 1]
 
 def IsRomanNumeral(text: str) -> bool:
 
