@@ -36,6 +36,7 @@ sys.path.insert(0, "../")
 
 import dreamy_utilities.Containers
 import dreamy_utilities.Filesystem
+import dreamy_utilities.HTML
 import dreamy_utilities.Mathematics
 import dreamy_utilities.Text
 import dreamy_utilities.Web
@@ -87,6 +88,20 @@ class TestFilesystem(unittest.TestCase):
             [
                 Path("Environment/A/B/2.sql"),
             ]
+        )
+
+class TestHTML(unittest.TestCase):
+
+    def test_EscapeHTMLEntities(self):
+
+        self.assertEqual(
+            dreamy_utilities.HTML.EscapeHTMLEntities("One & Two < Four"),
+            "One &amp; Two &lt; Four"
+        )
+
+        self.assertEqual(
+            dreamy_utilities.HTML.UnescapeHTMLEntities("One & Two &LT; Four"),
+            "One & Two < Four"
         )
 
 class TestMathematics(unittest.TestCase):

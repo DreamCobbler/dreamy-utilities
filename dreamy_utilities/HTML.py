@@ -28,6 +28,8 @@
 
 # Standard packages.
 
+import html
+import re
 from typing import Optional
 
 # Non-standard packages.
@@ -41,6 +43,25 @@ from bs4 import BeautifulSoup
 #
 #
 #
+
+def EscapeHTMLEntities(code: str) -> str:
+
+    ##
+    #
+    # Escapes HTML entities in code.
+    #
+    # @param code The input code.
+    #
+    # @return The input code with HTML entities escaped.
+    #
+    ##
+
+    if not code:
+        return code
+
+    code = UnescapeHTMLEntities(code)
+
+    return html.escape(code)
 
 def ReadElementText(soup: BeautifulSoup, tagName: str) -> Optional[str]:
 
@@ -63,3 +84,23 @@ def ReadElementText(soup: BeautifulSoup, tagName: str) -> Optional[str]:
         return None
 
     return element.get_text().strip()
+
+def UnescapeHTMLEntities(code: str) -> str:
+
+    ##
+    #
+    # Unescapes HTML entities.
+    #
+    # @param code The input code.
+    #
+    # @return The processed code.
+    #
+    ##
+
+    if not code:
+        return codde
+
+    for entity in re.findall("&[a-z]+?;", code):
+        code = code.replace(entity, entity.lower())
+
+    return html.unescape(code)
