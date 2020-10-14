@@ -107,6 +107,13 @@ class TestText(unittest.TestCase):
             b"Test."
         )
 
+    def test_DeprettifyAmount(self):
+
+        self.assertEqual(
+            dreamy_utilities.Text.DeprettifyAmount("1,036/2,316"),
+            (1036, 2316)
+        )
+
     def test_DeprettifyNumber(self):
 
         self.assertEqual(

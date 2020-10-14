@@ -29,7 +29,7 @@
 # Standard packages.
 
 from datetime import date, datetime
-from typing import Any
+from typing import Any, Optional, Tuple
 
 # Non-standard packages.
 
@@ -82,6 +82,31 @@ def Bytify(value: Any) -> bytes:
 
     else:
         return bytes(value, encoding = "utf-8")
+
+def DeprettifyAmount(amount: str) -> Optional[Tuple[int, int]]:
+
+    ##
+    #
+    # Converts an "amount" (i.e. something like "1,036/2,316" to a tuple of integers; in this case
+    # it would be (1036, 2316)).
+    #
+    # @param amount The textual amount.
+    #
+    # @return A tuple of integers, or **None**.
+    #
+    ##
+
+    if not amount:
+        return None
+
+    amount = amount.strip().split("/")
+    if len(amount) < 2:
+        return None
+
+    return (
+        DeprettifyNumber(amount[0]),
+        DeprettifyNumber(amount[1])
+    )
 
 def DeprettifyNumber(number: str) -> int:
 
