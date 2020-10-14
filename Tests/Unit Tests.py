@@ -326,6 +326,11 @@ class TestWeb(unittest.TestCase):
             "archiveofourown.org"
         )
 
+        self.assertEqual(
+            dreamy_utilities.Web.GetHostname(self._TEST_URL_4),
+            "najlepszaerotyka.com.pl"
+        )
+
     def test_GetSiteURL(self):
 
         self.assertEqual(
@@ -341,6 +346,7 @@ class TestWeb(unittest.TestCase):
     _TEST_URL_1 = "https://forums.spacebattles.com/threads/star-wars-a-penumbral-path.814685"
     _TEST_URL_2 = "https://archiveofourown.org/works/25981912/chapters/63166141"
     _TEST_URL_3 = "https://harrypotterfanfiction.com/viewstory.php?psid=327112"
+    _TEST_URL_4 = "https://najlepszaerotyka.com.pl/2018/03/01/blondynka-wedug-megasa-alexandrosa/"
 
 #
 #
