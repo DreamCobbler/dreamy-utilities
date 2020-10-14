@@ -44,7 +44,7 @@ from babel.numbers import format_decimal
 #
 #
 
-ValidRomanNumeralCharacters = [
+VALID_ROMAN_NUMERAL_CHARACTERS = [
     "I",
     "V",
     "X",
@@ -82,6 +82,35 @@ def Bytify(value: Any) -> bytes:
 
     else:
         return bytes(value, encoding = "utf-8")
+
+def DeprettifyNumber(number: str) -> int:
+
+    ##
+    #
+    # Converts a "pretty" number to integer. (I.e.: "1,036" to 1036).
+    #
+    # @param number The input number.
+    #
+    # @return Integer version of the input number.
+    #
+    ##
+
+    DEFAULT_RETURN_VALUE = 0
+
+    if not number:
+        return DEFAULT_RETURN_VALUE
+
+    number = number.strip().replace(",", "")
+
+    try:
+
+        number = int(number)
+
+    except ValueError:
+
+        return DEFAULT_RETURN_VALUE
+
+    return number
 
 def FillTemplate(values: Any, template: str) -> str:
 
@@ -192,7 +221,7 @@ def IsRomanNumeral(text: str) -> bool:
     #
     ##
 
-    if (not text) or any(x not in ValidRomanNumeralCharacters for x in text.strip()):
+    if (not text) or any(x not in VALID_ROMAN_NUMERAL_CHARACTERS for x in text.strip()):
         return False
 
     return True

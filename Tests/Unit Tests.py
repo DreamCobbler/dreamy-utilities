@@ -107,6 +107,23 @@ class TestText(unittest.TestCase):
             b"Test."
         )
 
+    def test_DeprettifyNumber(self):
+
+        self.assertEqual(
+            dreamy_utilities.Text.DeprettifyNumber(""),
+            0
+        )
+
+        self.assertEqual(
+            dreamy_utilities.Text.DeprettifyNumber("003"),
+            3
+        )
+
+        self.assertEqual(
+            dreamy_utilities.Text.DeprettifyNumber("1,036"),
+            1036
+        )
+
     def test_FillTemplate(self):
 
         self.assertEqual(
