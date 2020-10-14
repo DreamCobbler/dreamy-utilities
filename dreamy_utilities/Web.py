@@ -128,9 +128,15 @@ class ParsedURL:
             self.Domain = URL[position + len(separator):]
             URL = URL[:position]
 
+        else:
+
+            self.Domain = URL
+
         # Extract the subdomain.
 
-        self.Subdomain = URL
+        if URL:
+
+            self.Subdomain = URL
 
 #
 #

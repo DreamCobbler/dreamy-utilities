@@ -310,18 +310,24 @@ class TestWeb(unittest.TestCase):
     def test_GetHostname(self):
 
         self.assertEqual(
-            dreamy_utilities.Web.GetHostname(self._TEST_URL),
+            dreamy_utilities.Web.GetHostname(self._TEST_URL_1),
             "spacebattles.com"
+        )
+
+        self.assertEqual(
+            dreamy_utilities.Web.GetHostname(self._TEST_URL_2),
+            "archiveofourown.org"
         )
 
     def test_GetSiteURL(self):
 
         self.assertEqual(
-            dreamy_utilities.Web.GetSiteURL(self._TEST_URL),
+            dreamy_utilities.Web.GetSiteURL(self._TEST_URL_1),
             "https://forums.spacebattles.com"
         )
 
-    _TEST_URL = "https://forums.spacebattles.com/threads/star-wars-a-penumbral-path.814685"
+    _TEST_URL_1 = "https://forums.spacebattles.com/threads/star-wars-a-penumbral-path.814685"
+    _TEST_URL_2 = "https://archiveofourown.org/works/25981912/chapters/63166141"
 
 #
 #
