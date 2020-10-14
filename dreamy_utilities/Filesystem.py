@@ -151,15 +151,19 @@ def GetUniqueFileName() -> str:
 
     return uuid4().hex
 
-def ReadTextFile(filePath: Union[str, Path]) -> Optional[str]:
+def ReadTextFile(
+    filePath: Union[str, Path],
+    lines: bool = False
+) -> Union[Optional[str], Optional[List[str]]]:
 
     ##
     #
     # Reads the contents of a file to a string.
     #
     # @param filePath The file path.
+    # @param lines    Should we return a list of lines?
     #
-    # @return File contents, or **None**.
+    # @return File contents - as either one long string, or a list of strings - or **None**.
     #
     ##
 
@@ -175,7 +179,7 @@ def ReadTextFile(filePath: Union[str, Path]) -> Optional[str]:
     try:
 
         with open(filePath, "r", encoding = "utf-8") as file:
-            return file.read()
+            return file.read() if (not lines) else file.readlines()
 
     except OSError:
 
