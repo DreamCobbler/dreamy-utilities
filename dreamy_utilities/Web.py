@@ -131,6 +131,7 @@ class ParsedURL:
         else:
 
             self.Domain = URL
+            URL = None
 
         # Extract the subdomain.
 
@@ -228,4 +229,7 @@ def GetSiteURL(URL: str) -> str:
 
     parts = ParsedURL(URL)
 
-    return f"{parts.Protocol}://{parts.Subdomain}.{parts.Domain}.{parts.Suffix}"
+    if parts.Subdomain:
+        return f"{parts.Protocol}://{parts.Subdomain}.{parts.Domain}.{parts.Suffix}"
+    else:
+        return f"{parts.Protocol}://{parts.Domain}.{parts.Suffix}"

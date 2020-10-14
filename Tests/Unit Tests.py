@@ -333,8 +333,14 @@ class TestWeb(unittest.TestCase):
             "https://forums.spacebattles.com"
         )
 
+        self.assertEqual(
+            dreamy_utilities.Web.GetSiteURL(self._TEST_URL_3),
+            "https://harrypotterfanfiction.com"
+        )
+
     _TEST_URL_1 = "https://forums.spacebattles.com/threads/star-wars-a-penumbral-path.814685"
     _TEST_URL_2 = "https://archiveofourown.org/works/25981912/chapters/63166141"
+    _TEST_URL_3 = "https://harrypotterfanfiction.com/viewstory.php?psid=327112"
 
 #
 #
