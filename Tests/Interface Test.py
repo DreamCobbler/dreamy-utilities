@@ -63,3 +63,4 @@ interface.Table(
         ["D", "4"],
     ]
 )
+interface.GrabUserAttention()

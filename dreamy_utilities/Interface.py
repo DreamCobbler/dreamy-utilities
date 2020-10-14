@@ -28,6 +28,7 @@
 
 # Standard packages.
 
+import os
 from typing import List, Optional, Tuple
 
 # Non-standard packages.
@@ -60,6 +61,26 @@ class Interface:
         ##
 
         colorama.init()
+
+    def GrabUserAttention(self) -> None:
+
+        ##
+        #
+        # Attempts to grab the user's attention by making a "beep" sound. (On Windows it also makes
+        # the taskbar button flash.)
+        #
+        ##
+
+        print("\a")
+
+        if "nt" == os.name:
+
+            import ctypes
+
+            ctypes.windll.user32.FlashWindow(
+                ctypes.windll.kernel32.GetConsoleWindow(),
+                True
+            )
 
     def Text(
         self,
