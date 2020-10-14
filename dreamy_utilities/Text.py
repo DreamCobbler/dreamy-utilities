@@ -29,12 +29,14 @@
 # Standard packages.
 
 from datetime import date, datetime
-from typing import Any, Tuple
+import re
+from typing import Any, Optional, Tuple
 
 # Non-standard packages.
 
 from babel.dates import format_date
 from babel.numbers import format_decimal
+from titlecase import titlecase
 
 #
 #
@@ -322,6 +324,90 @@ def PrettifyNumber(
         number,
         locale = locale
     )
+
+def PrettifyTitle(title: str, removeContext: bool) -> str:
+
+    ##
+    #
+    # Returns a prettified title.
+    #
+    # @param title         The input title.
+    # @param removeContext Should we remove the context? (Like "Chapter 3: ".)
+    #
+    # @return Prettified input title.
+    #
+    ##
+
+    if not title:
+        return title
+
+    if removeContext:
+
+        POSSIBLE_PREFIXES = [
+            "Chapter \d+",
+            "Update \d+",
+            "Part \d+",
+        ]
+
+        POSSIBLE_POSTFIXES = [
+            "Finale",
+            "Final Part",
+            "Final Update",
+            "Final",
+        ]
+
+        POSSIBLE_PREFIXES_JOINED = "|".join(POSSIBLE_PREFIXES)
+        POSSIBLE_POSTFIXES_JOINED = "|".join(POSSIBLE_POSTFIXES)
+
+        title = re.sub(
+            f"\[?\(?({POSSIBLE_PREFIXES_JOINED}|\d+)\)?\]?:?\.?",
+            "",
+            title,
+            flags = re.IGNORECASE
+        )
+
+        title = re.sub(
+            f"\(?\[?({POSSIBLE_POSTFIXES_JOINED})\)?\]?",
+            "",
+            title,
+            flags = re.IGNORECASE
+        )
+
+        pass
+
+    title = titlecase(title)
+    title = title.strip()
+
+    if IsStringEmpty(title):
+        title = ""
+
+    return title
+
+def SeparateSubtitle(title: str) -> Optional[str]:
+
+    ##
+    #
+    # Retrieves the proper subtitle of the story ("aaa: bbbbb" will return "bbbbb").
+    #
+    # @param title The title as it was retrieved.
+    #
+    # @return The subtitle.
+    #
+    ##
+
+    if not title:
+        return None
+
+    subtitle = re.sub("\d+\.+:*", ":", title)
+    subtitle = re.sub("\s+-\s+", " : ", subtitle)
+
+    semicolonPosition = subtitle.find(":")
+    if -1 != semicolonPosition:
+        subtitle = subtitle[semicolonPosition + 1:]
+
+    subtitle = subtitle.strip()
+
+    return subtitle
 
 def Stringify(value: Any) -> str:
 

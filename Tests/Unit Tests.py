@@ -283,6 +283,70 @@ class TestText(unittest.TestCase):
             "0.324"
         )
 
+    def test_PrettifyTitle(self):
+
+        self.assertEqual(
+            dreamy_utilities.Text.PrettifyTitle("Chapter 1: Lorem ipsum dolor", removeContext = True),
+            "Lorem Ipsum Dolor"
+        )
+
+        self.assertEqual(
+            dreamy_utilities.Text.PrettifyTitle("1: Lorem ipsum dolor", removeContext = True),
+            "Lorem Ipsum Dolor"
+        )
+
+        self.assertEqual(
+            dreamy_utilities.Text.PrettifyTitle("1. Lorem ipsum dolor", removeContext = True),
+            "Lorem Ipsum Dolor"
+        )
+
+        self.assertEqual(
+            dreamy_utilities.Text.PrettifyTitle("1.Lorem ipsum dolor", removeContext = True),
+            "Lorem Ipsum Dolor"
+        )
+
+        self.assertEqual(
+            dreamy_utilities.Text.PrettifyTitle("Lorem ipsum dolor [Finale]", removeContext = True),
+            "Lorem Ipsum Dolor"
+        )
+
+        self.assertEqual(
+            dreamy_utilities.Text.PrettifyTitle("Lorem ipsum dolor (Final part)", removeContext = True),
+            "Lorem Ipsum Dolor"
+        )
+
+        self.assertEqual(
+            dreamy_utilities.Text.PrettifyTitle("Lorem ipsum dolor (Final update)", removeContext = True),
+            "Lorem Ipsum Dolor"
+        )
+
+        self.assertEqual(
+            dreamy_utilities.Text.PrettifyTitle("(Update 8) Lorem ipsum dolor", removeContext = True),
+            "Lorem Ipsum Dolor"
+        )
+
+        self.assertEqual(
+            dreamy_utilities.Text.PrettifyTitle("[Part 4] Lorem ipsum dolor", removeContext = True),
+            "Lorem Ipsum Dolor"
+        )
+
+    def test_SeparateSubtitle(self):
+
+        self.assertEqual(
+            dreamy_utilities.Text.SeparateSubtitle("Chapter 1: Lorem ipsum dolor"),
+            "Lorem ipsum dolor"
+        )
+
+        self.assertEqual(
+            dreamy_utilities.Text.SeparateSubtitle("My Story: Lorem ipsum dolor"),
+            "Lorem ipsum dolor"
+        )
+
+        self.assertEqual(
+            dreamy_utilities.Text.SeparateSubtitle("My Story - Lorem ipsum dolor"),
+            "Lorem ipsum dolor"
+        )
+
     def test_Stringify(self):
 
         self.assertEqual(
