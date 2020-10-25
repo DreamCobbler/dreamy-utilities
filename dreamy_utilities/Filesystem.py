@@ -29,6 +29,7 @@
 # Standard packages.
 
 import os
+from os.path import expandvars, isfile
 from pathlib import Path
 import shutil
 from string import ascii_letters, digits
@@ -86,6 +87,55 @@ def CopyTree(sourceDirectoryPath: Path, destinationDirectoryPath: Path) -> None:
     destinationDirectoryPath.parent.mkdir(parents = True, exist_ok = True)
 
     shutil.copytree(sourceDirectoryPath, destinationDirectoryPath)
+
+def FindExecutable(
+    fileName: str,
+    applicationName: Optional[str] = None,
+    relativePath: Optional[str] = None
+) -> Optional[Path]:
+
+    ##
+    #
+    # Returns the absolute path to an executable.
+    #
+    # @param fileName        The name of the executable (without file name extension).
+    #                        For example: "soffice".
+    # @param applicationName The name of the application the executable belongs to.
+    #                        For example: "LibreOffice".
+    # @param relativePath    The relative path to the executable, inside the application's
+    #                        directory. For example: "program".
+    #
+    # @return The absolute file path, or **None**.
+    #
+    ##
+
+    path = shutil.which(fileName)
+    if path:
+        return Path(path)
+
+    path = f"/usr/bin/{fileName}"
+    if isfile(path):
+        return Path(path)
+
+    path = f"/bin/{fileName}"
+    if isfile(path):
+        return Path(path)
+
+    localExecutablePath = f"{fileName}.exe"
+    if relativePath:
+        localExecutablePath = f"{relativePath}\\" + localExecutablePath
+    if applicationName:
+        localExecutablePath = f"{applicationName}\\" + localExecutablePath
+
+    path = expandvars(f"%ProgramW6432%\\{localExecutablePath}")
+    if isfile(path):
+        return Path(path)
+
+    path = expandvars(f"%ProgramFiles(x86)%\\{localExecutablePath}")
+    if isfile(path):
+        return Path(path)
+
+    return None
 
 def FindFiles(
     directoryPath: Optional[Union[str, Path]] = None,
