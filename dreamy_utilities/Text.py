@@ -30,7 +30,7 @@
 
 from datetime import date, datetime
 import re
-from typing import Any, Optional, Tuple
+from typing import Any, List, Optional, Tuple
 
 # Non-standard packages.
 
@@ -238,6 +238,51 @@ def GetLevenshteinDistance(firstString: str, secondString: str) -> int:
 
     return matrix[sizeH - 1][sizeV - 1]
 
+def GetLongestLeadingSubstring(strings: List[str]) -> Optional[str]:
+
+    ##
+    #
+    # Retrieves the longest leading (i.e. starting) substring from a list of strings.
+    #
+    # @param strings A list of strings.
+    #
+    # @return The longest leading substring, or **None**.
+    #
+    ##
+
+    if not strings:
+        return None
+
+    shortestStringLength = 0
+    for string in strings:
+        shortestStringLength = max(shortestStringLength, len(string))
+
+    if not shortestStringLength:
+        return None
+
+    longestLeadingSubstring = ""
+    currentCharacter = strings[0][0]
+
+    for characterIndex in range(0, shortestStringLength):
+
+        allStringsMatchCharacter = True
+
+        for string in strings:
+
+            if string[characterIndex] != currentCharacter:
+                allStringsMatchCharacter = False
+                break
+
+        if not allStringsMatchCharacter:
+            break
+
+        longestLeadingSubstring += currentCharacter
+
+        if characterIndex != shortestStringLength - 2:
+            currentCharacter = strings[0][characterIndex + 1]
+
+    return longestLeadingSubstring
+
 def IsRomanNumeral(text: str) -> bool:
 
     ##
@@ -345,6 +390,7 @@ def PrettifyTitle(title: str, removeContext: bool) -> str:
 
         POSSIBLE_PREFIXES = [
             "Chapter \d+",
+            "Ch\. \d+",
             "Update \d+",
             "Part \d+",
         ]
@@ -354,23 +400,27 @@ def PrettifyTitle(title: str, removeContext: bool) -> str:
             "Final Part",
             "Final Update",
             "Final",
+            "Chapter \d+",
+            "Ch\. \d+",
+            "Update \d+",
+            "Part \d+",
         ]
 
         POSSIBLE_PREFIXES_JOINED = "|".join(POSSIBLE_PREFIXES)
         POSSIBLE_POSTFIXES_JOINED = "|".join(POSSIBLE_POSTFIXES)
 
         title = re.sub(
-            f"\[?\(?({POSSIBLE_PREFIXES_JOINED}|\d+)\)?\]?:?\.?",
+            f"^\[?\(?({POSSIBLE_PREFIXES_JOINED}|\d+)\)?\]?:?\.?",
             "",
             title,
-            flags = re.IGNORECASE
+            flags = re.IGNORECASE | re.MULTILINE
         )
 
         title = re.sub(
-            f"\(?\[?({POSSIBLE_POSTFIXES_JOINED})\)?\]?",
+            f"\(?\[?({POSSIBLE_POSTFIXES_JOINED})\)?\]?$",
             "",
             title,
-            flags = re.IGNORECASE
+            flags = re.IGNORECASE | re.MULTILINE
         )
 
         pass

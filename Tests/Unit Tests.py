@@ -190,6 +190,20 @@ class TestText(unittest.TestCase):
             5
         )
 
+    def test_GetLongestLeadingSubstring(self):
+
+        strings = [
+            "Perska Odyseja XIX: Wspólny wróg",
+            "Perska Odyseja XVIII: Oblężenie (Megas Alexandros)",
+            "Perska Odyseja XVII: Oprawcy i tchórze (Megas Alexandros)",
+            "Perska Odyseja II: Trzy zdrady (Megas Alexandros)",
+        ]
+
+        self.assertEqual(
+            dreamy_utilities.Text.GetLongestLeadingSubstring(strings),
+            "Perska Odyseja "
+        )
+
     def test_IsRomanNumeral(self):
 
         self.assertEqual(
