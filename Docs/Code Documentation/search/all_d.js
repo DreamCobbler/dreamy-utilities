@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['readtextfile_51',['ReadTextFile',['../namespacedreamy__utilities_1_1_filesystem.html#a25aaae4c60994ce8145a34c3305b5ac8',1,'dreamy_utilities::Filesystem']]],
-  ['removeduplicates_52',['RemoveDuplicates',['../namespacedreamy__utilities_1_1_containers.html#a511f3cbb0c7d0dd1785937656e8be21e',1,'dreamy_utilities::Containers']]],
-  ['removeemptydirectories_53',['RemoveEmptyDirectories',['../namespacedreamy__utilities_1_1_filesystem.html#a49380c2b00c6d3b1d779ada498ed9a9c',1,'dreamy_utilities::Filesystem']]]
+  ['prettifydate_55',['PrettifyDate',['../namespacedreamy__utilities_1_1_text.html#a9f19ffd5afb5a87621a82523a37a11a5',1,'dreamy_utilities::Text']]],
+  ['prettifynumber_56',['PrettifyNumber',['../namespacedreamy__utilities_1_1_text.html#a68efe4144ecf428eac0d7653d085433e',1,'dreamy_utilities::Text']]],
+  ['prettifytitle_57',['PrettifyTitle',['../namespacedreamy__utilities_1_1_text.html#a359ae9daa3ebb5382953af9b46011376',1,'dreamy_utilities::Text']]],
+  ['process_58',['Process',['../classdreamy__utilities_1_1_interface_1_1_interface.html#a6c7ee8995df5f2c8eef0da870bc266e6',1,'dreamy_utilities::Interface::Interface']]],
+  ['progressbar_59',['ProgressBar',['../classdreamy__utilities_1_1_interface_1_1_interface.html#a77bb3e488c703162b920ec6f7a95b813',1,'dreamy_utilities::Interface::Interface']]]
 ];

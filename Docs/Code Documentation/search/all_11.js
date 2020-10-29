@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['web_2epy_61',['Web.py',['../_web_8py.html',1,'']]],
-  ['writetextfile_62',['WriteTextFile',['../namespacedreamy__utilities_1_1_filesystem.html#af22649d8db858724075c4e2694e1af2a',1,'dreamy_utilities::Filesystem']]]
+  ['unescapehtmlentities_71',['UnescapeHTMLEntities',['../namespacedreamy__utilities_1_1_h_t_m_l.html#aa5476b7a3cebafafe5cea1a9d1720680',1,'dreamy_utilities::HTML']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['text_2epy_78',['Text.py',['../_text_8py.html',1,'']]]
+  ['mathematics_2epy_92',['Mathematics.py',['../_mathematics_8py.html',1,'']]]
 ];

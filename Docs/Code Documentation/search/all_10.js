@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['valid_5ffile_5fname_5fcharacters_59',['VALID_FILE_NAME_CHARACTERS',['../namespacedreamy__utilities_1_1_filesystem.html#ac1f75f1b172f430b735d8888a9b3fa37',1,'dreamy_utilities::Filesystem']]],
-  ['validromannumeralcharacters_60',['ValidRomanNumeralCharacters',['../namespacedreamy__utilities_1_1_text.html#ac8f54c282864c3bc29a6d4439b09a91a',1,'dreamy_utilities::Text']]]
+  ['table_66',['Table',['../classdreamy__utilities_1_1_interface_1_1_interface.html#abd4f52192f0966301d4db572341ffc43',1,'dreamy_utilities::Interface::Interface']]],
+  ['text_67',['Text',['../classdreamy__utilities_1_1_interface_1_1_interface.html#ac437296287757651b746fcf0d8e43e94',1,'dreamy_utilities::Interface::Interface']]],
+  ['text_2epy_68',['Text.py',['../_text_8py.html',1,'']]],
+  ['truncate_69',['Truncate',['../namespacedreamy__utilities_1_1_text.html#a27bf88c9da80fe7c4ab2581ef393b011',1,'dreamy_utilities::Text']]],
+  ['truncatebywords_70',['TruncateByWords',['../namespacedreamy__utilities_1_1_text.html#ac2a1bd2131a1803eb5111f2f7ce5a59e',1,'dreamy_utilities::Text']]]
 ];

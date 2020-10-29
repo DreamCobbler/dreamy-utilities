@@ -82,6 +82,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6eede7928ce51c3003e1f630c6f645df"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdreamy__utilities_1_1_interface_1_1_interface.html#a6eede7928ce51c3003e1f630c6f645df">__init__</a> (self)</td></tr>
 <tr class="memdesc:a6eede7928ce51c3003e1f630c6f645df"><td class="mdescLeft">&#160;</td><td class="mdescRight">The constructor.  <a href="classdreamy__utilities_1_1_interface_1_1_interface.html#a6eede7928ce51c3003e1f630c6f645df">More...</a><br /></td></tr>
 <tr class="separator:a6eede7928ce51c3003e1f630c6f645df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5561cf782d9c99d8c271247ca0dd0c77"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdreamy__utilities_1_1_interface_1_1_interface.html#a5561cf782d9c99d8c271247ca0dd0c77">GrabUserAttention</a> (self)</td></tr>
+<tr class="memdesc:a5561cf782d9c99d8c271247ca0dd0c77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attempts to grab the user's attention by making a "beep" sound.  <a href="classdreamy__utilities_1_1_interface_1_1_interface.html#a5561cf782d9c99d8c271247ca0dd0c77">More...</a><br /></td></tr>
+<tr class="separator:a5561cf782d9c99d8c271247ca0dd0c77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac437296287757651b746fcf0d8e43e94"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdreamy__utilities_1_1_interface_1_1_interface.html#ac437296287757651b746fcf0d8e43e94">Text</a> (self, str text, bool section=False, bool clearLine=False, str end=&quot;\n&quot;, Optional[str] color=None, bool bold=False)</td></tr>
 <tr class="memdesc:ac437296287757651b746fcf0d8e43e94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints a line of text.  <a href="classdreamy__utilities_1_1_interface_1_1_interface.html#ac437296287757651b746fcf0d8e43e94">More...</a><br /></td></tr>
 <tr class="separator:ac437296287757651b746fcf0d8e43e94"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -109,6 +112,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a77bb3e488c703162b920ec6f7a95b813"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdreamy__utilities_1_1_interface_1_1_interface.html#a77bb3e488c703162b920ec6f7a95b813">ProgressBar</a> (self, int progress, int total, int length, str description, bool clearLine=True)</td></tr>
 <tr class="memdesc:a77bb3e488c703162b920ec6f7a95b813"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints a progress bar.  <a href="classdreamy__utilities_1_1_interface_1_1_interface.html#a77bb3e488c703162b920ec6f7a95b813">More...</a><br /></td></tr>
 <tr class="separator:a77bb3e488c703162b920ec6f7a95b813"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd4f52192f0966301d4db572341ffc43"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdreamy__utilities_1_1_interface_1_1_interface.html#abd4f52192f0966301d4db572341ffc43">Table</a> (self, List[List[str]] data, Tuple[int, int] padding=(0, 1), str alignment=&quot;rl&quot;)</td></tr>
+<tr class="separator:abd4f52192f0966301d4db572341ffc43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
@@ -425,6 +430,27 @@ Static Private Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a5561cf782d9c99d8c271247ca0dd0c77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5561cf782d9c99d8c271247ca0dd0c77">&#9670;&nbsp;</a></span>GrabUserAttention()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None dreamy_utilities.Interface.Interface.GrabUserAttention </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Attempts to grab the user's attention by making a "beep" sound. </p>
+<p>(On Windows it also makes the taskbar button flash.) </p>
+
+</div>
+</div>
 <a id="a08428e57491b5dc54e2d89d14b9ab97e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a08428e57491b5dc54e2d89d14b9ab97e">&#9670;&nbsp;</a></span>LineBreak()</h2>
 
@@ -620,6 +646,46 @@ Static Private Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="abd4f52192f0966301d4db572341ffc43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd4f52192f0966301d4db572341ffc43">&#9670;&nbsp;</a></span>Table()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def dreamy_utilities.Interface.Interface.Table </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">List[List[str]]&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Tuple[int, int] &#160;</td>
+          <td class="paramname"><em>padding</em> = <code>(0,&#160;1)</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">str &#160;</td>
+          <td class="paramname"><em>alignment</em> = <code>&quot;rl&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
