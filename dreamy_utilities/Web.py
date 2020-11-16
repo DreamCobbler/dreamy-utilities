@@ -28,6 +28,7 @@
 
 # Application.
 
+import dreamy_utilities.Configuration as Configuration
 from dreamy_utilities.Text import Stringify
 
 # Standard packages.
@@ -44,19 +45,34 @@ import tldextract
 #
 #
 #
+# Constants.
+#
+#
+#
+
+DefaultUserAgent = f"{Configuration.ApplicationName} {Configuration.ApplicationVersion}"
+
+#
+#
+#
 # Functions.
 #
 #
 #
 
-def DownloadPage(URL: str, session: Optional[Session] = None) -> Optional[str]:
+def DownloadPage(
+    URL: str,
+    session: Optional[Session] = None,
+    userAgent: str = DefaultUserAgent
+) -> Optional[str]:
 
     ##
     #
     # Downloads a webpage and returns its code.
     #
-    # @param URL     The URL.
-    # @param session The Session object to be used for the download.
+    # @param URL       The URL.
+    # @param session   The Session object to be used for the download.
+    # @param userAgent The User-Agent of the application.
     #
     # @return The code of the downloaded page. **None**, if an error has occurred.
     #
@@ -65,7 +81,11 @@ def DownloadPage(URL: str, session: Optional[Session] = None) -> Optional[str]:
     if not URL:
         return None
 
-    response = session.get(URL) if session else get(URL)
+    headers = {
+        "User-Agent": userAgent
+    }
+
+    response = session.get(URL, headers = headers) if session else get(URL, headers = headers)
     if not response:
         return None
 
@@ -74,22 +94,24 @@ def DownloadPage(URL: str, session: Optional[Session] = None) -> Optional[str]:
 def DownloadSoup(
     URL: str,
     session: Optional[Session] = None,
-    parser: str = "html.parser"
+    parser: str = "html.parser",
+    userAgent: str = DefaultUserAgent
 ) -> Optional[BeautifulSoup]:
 
     ##
     #
     # Downloads a webpage and returns it as a soup of tags.
     #
-    # @param URL     The URL.
-    # @param session The Session object to be used for the download.
-    # @param parser  The HTML parser to be used.
+    # @param URL       The URL.
+    # @param session   The Session object to be used for the download.
+    # @param parser    The HTML parser to be used.
+    # @param userAgent The User-Agent of the application.
     #
     # @return The tag soup. **None**, if an error has occurred.
     #
     ##
 
-    code = DownloadPage(URL, session)
+    code = DownloadPage(URL, session, userAgent)
     if not code:
         return None
 
