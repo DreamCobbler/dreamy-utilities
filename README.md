@@ -1,4 +1,4 @@
-# [Dreamy Utilities](https://github.com/DreamCobbler/dreamy-utilities) (*1.0.0*)
+# [Dreamy Utilities](https://github.com/DreamCobbler/dreamy-utilities) (*1.1.0 alpha*)
 
 A set of various utilities for [Python](https://www.python.org/) applications.
 

@@ -27,7 +27,7 @@
 #
 
 ApplicationName = "Dreamy Utilities"
-ApplicationVersion = "1.0.0"
+ApplicationVersion = "1.1.0a1"
 ApplicationShortDescription = "A collection of various utilities. "
 ApplicationURL = "https://github.com/DreamCobbler/dreamy-utilities"
 
