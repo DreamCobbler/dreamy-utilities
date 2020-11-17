@@ -217,16 +217,16 @@ def ReadTextFile(
     #
     ##
 
-    # Process the file path.
-
-    filePath = Path(filePath)
-
-    if (not filePath) or not filePath.is_file():
-        return None
-
-    # Open and read the file.
-
     try:
+
+        # Process the file path.
+
+        filePath = Path(filePath)
+
+        if (not filePath) or not filePath.is_file():
+            return None
+
+        # Open and read the file.
 
         with open(filePath, "r", encoding = "utf-8") as file:
             return file.read() if (not lines) else file.readlines()
@@ -264,20 +264,20 @@ def WriteTextFile(filePath: Union[str, Path], content: str) -> bool:
     #
     ##
 
-    # Process the file path.
-
-    filePath = Path(filePath)
-
-    if not filePath:
-        return False
-
-    # Create the directory tree.
-
-    filePath.parent.mkdir(parents = True, exist_ok = True)
-
-    # Write the file.
-
     try:
+
+        # Process the file path.
+
+        filePath = Path(filePath)
+
+        if not filePath:
+            return False
+
+        # Create the directory tree.
+
+        filePath.parent.mkdir(parents = True, exist_ok = True)
+
+        # Write the file.
 
         with open(filePath, "w", encoding = "utf-8") as file:
             file.write(content)
