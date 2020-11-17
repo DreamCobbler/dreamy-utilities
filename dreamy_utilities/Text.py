@@ -478,7 +478,7 @@ def Stringify(value: Any) -> str:
         return value
 
     elif isinstance(value, bytes):
-        return value.decode("utf-8")
+        return value.decode("utf-8", errors = "ignore")
 
     else:
         return str(value)
