@@ -164,6 +164,28 @@ def FillTemplate(values: Any, template: str) -> str:
 
     return template
 
+def FindFirstMatch(text: str, expression: str) -> Optional[str]:
+
+    ##
+    #
+    # Returns the first regular expression match inside text.
+    #
+    # @param text       The text.
+    # @param expression The regular expression.
+    #
+    # @return The first matching group; optionally **None**.
+    #
+    ##
+
+    if (not text) or (not expression):
+        return None
+
+    match = re.search(expression, text)
+    if not match:
+        return None
+
+    return match.group(1)
+
 def GetCurrentDate() -> str:
 
     ##

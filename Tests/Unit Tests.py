@@ -156,6 +156,16 @@ class TestText(unittest.TestCase):
             "My name is Ben. I'm a Human."
         )
 
+    def test_FindFirstMatch(self):
+
+        self.assertEqual(
+            dreamy_utilities.Text.FindFirstMatch(
+                "Sample text - 1234 - other text.",
+                "- (\d+) -"
+            ),
+            "1234"
+        )
+
     def test_GetDateFromTimestamp(self):
 
         self.assertEqual(
