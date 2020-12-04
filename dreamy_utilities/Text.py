@@ -481,13 +481,14 @@ def SeparateSubtitle(title: str) -> Optional[str]:
 
     return subtitle
 
-def Stringify(value: Any) -> str:
+def Stringify(value: Any, encoding = "utf-8") -> str:
 
     ##
     #
     # Converts any value to a string.
     #
-    # @param value The input value.
+    # @param value    The input value.
+    # @param encoding The expected text encoding.
     #
     # @return Stringified input value.
     #
@@ -500,7 +501,7 @@ def Stringify(value: Any) -> str:
         return value
 
     elif isinstance(value, bytes):
-        return value.decode("utf-8", errors = "ignore")
+        return value.decode(encoding, errors = "ignore")
 
     else:
         return str(value)

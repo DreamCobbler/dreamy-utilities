@@ -8,7 +8,8 @@
 
 - Added the *FindFirstMatch* function.
 
-- Unicode decoding error are now ignored in the *Stringify* function.
+- Text decoding error are now ignored in the *Stringify* function.
+- The *Stringify* function now can use the provided encoding to decode the string.
 
 **Web:**
 
