@@ -14,6 +14,7 @@
 **Web:**
 
 - Added the option to customize the user-agent in the *DownloadPage* and the *DownloadSoup* functions.
+- Added the option to customize the text encoding in the *DownloadPage* function.
 
 # 1.0.0
 

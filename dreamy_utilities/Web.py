@@ -50,7 +50,8 @@ import tldextract
 #
 #
 
-DefaultUserAgent = f"{Configuration.ApplicationName} {Configuration.ApplicationVersion}"
+DEFAULT_USER_AGENT = f"{Configuration.ApplicationName} {Configuration.ApplicationVersion}"
+DEFAULT_TEXT_ENCODING = "utf-8"
 
 #
 #
@@ -63,7 +64,8 @@ DefaultUserAgent = f"{Configuration.ApplicationName} {Configuration.ApplicationV
 def DownloadPage(
     URL: str,
     session: Optional[Session] = None,
-    userAgent: str = DefaultUserAgent
+    userAgent: str = DEFAULT_USER_AGENT,
+    textEncoding: str = DEFAULT_TEXT_ENCODING
 ) -> Optional[str]:
 
     ##
@@ -89,13 +91,13 @@ def DownloadPage(
     if not response:
         return None
 
-    return Stringify(response.content)
+    return Stringify(response.content, encoding = textEncoding)
 
 def DownloadSoup(
     URL: str,
     session: Optional[Session] = None,
     parser: str = "html.parser",
-    userAgent: str = DefaultUserAgent
+    userAgent: str = DEFAULT_USER_AGENT
 ) -> Optional[BeautifulSoup]:
 
     ##
