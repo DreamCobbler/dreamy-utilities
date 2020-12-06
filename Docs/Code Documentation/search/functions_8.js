@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['isromannumeral_124',['IsRomanNumeral',['../namespacedreamy__utilities_1_1_text.html#aa26f065677e0cbefb68adbaf1275b1e1',1,'dreamy_utilities::Text']]],
-  ['isstringempty_125',['IsStringEmpty',['../namespacedreamy__utilities_1_1_text.html#a2a53602ec432b04f3be7324a1f40cc50',1,'dreamy_utilities::Text']]]
+  ['isromannumeral_128',['IsRomanNumeral',['../namespacedreamy__utilities_1_1_text.html#aa26f065677e0cbefb68adbaf1275b1e1',1,'dreamy_utilities::Text']]],
+  ['isstringempty_129',['IsStringEmpty',['../namespacedreamy__utilities_1_1_text.html#a2a53602ec432b04f3be7324a1f40cc50',1,'dreamy_utilities::Text']]]
 ];
