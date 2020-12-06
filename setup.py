@@ -58,14 +58,12 @@ setup(
     url = Configuration.ApplicationURL,
 
     install_requires = [
-
         "babel",
         "bs4",
         "colorama",
         "termtables",
         "titlecase",
         "tldextract",
-
     ],
 
     packages = find_packages(),
