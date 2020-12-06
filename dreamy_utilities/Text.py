@@ -432,7 +432,7 @@ def PrettifyTitle(title: str, removeContext: bool) -> str:
         POSSIBLE_POSTFIXES_JOINED = "|".join(POSSIBLE_POSTFIXES)
 
         title = re.sub(
-            f"^\[?\(?({POSSIBLE_PREFIXES_JOINED}|\d+)\)?\]?:?\.?",
+            f"^\[?\(?({POSSIBLE_PREFIXES_JOINED}|\d+)\)?\]?\s*:?-?\.?",
             "",
             title,
             flags = re.IGNORECASE | re.MULTILINE
@@ -445,13 +445,16 @@ def PrettifyTitle(title: str, removeContext: bool) -> str:
             flags = re.IGNORECASE | re.MULTILINE
         )
 
-        pass
+    title = re.sub("(\\s)\\?", "?", title)
+    title = re.sub("(\\s)\\!", "!", title)
 
     title = titlecase(title)
     title = title.strip()
 
     if IsStringEmpty(title):
         title = ""
+    else:
+        title = title[0].upper() + title[1:]
 
     return title
 
