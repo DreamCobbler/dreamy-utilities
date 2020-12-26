@@ -28,6 +28,7 @@
 
 # Standard packages.
 
+from getpass import getpass
 import os
 from typing import List, Optional, Tuple
 
@@ -81,6 +82,52 @@ class Interface:
                 ctypes.windll.kernel32.GetConsoleWindow(),
                 True
             )
+
+    def ReadString(
+        self,
+        description: str,
+        options: Optional[List[str]] = None,
+        default: Optional[str] = None
+    ) -> str:
+
+        ##
+        #
+        # Reads a string value from the uer.
+        #
+        # @param description The question asked.
+        # @param options     The available answers.
+        # @param default     The default value.
+        #
+        # @return Read value.
+        #
+        ##
+
+        if options:
+
+            optionsDescription = "/".join(options)
+            readValue = input(f"@ {description} ({optionsDescription}) [{default}]: ")
+
+            return readValue if (readValue in options) else default
+
+        else:
+
+            readValue = input(f"@ {description}: ")
+
+            return readValue
+
+    def ReadPassword(self, description: str) -> str:
+
+        ##
+        #
+        # Reads a password from the uer.
+        #
+        # @param description The description.
+        #
+        # @return Read password.
+        #
+        ##
+
+        return getpass(prompt = f"@ {description}: ")
 
     def Text(
         self,
