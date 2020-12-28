@@ -70,15 +70,15 @@ class WebSession:
     def __init__(
         self,
         userAgent: str = "",
-        cloudscraper: bool = False
+        useCloudscraper: bool = False
     ) -> None:
 
         ##
         #
         # The constructor.
         #
-        # @param userAgent    The user-agent to be used.
-        # @param cloudscraper Should the cloudscraper be used instead of ordinary session?
+        # @param userAgent       The user-agent to be used.
+        # @param useCloudscraper Should the cloudscraper be used instead of ordinary session?
         #
         ##
 
