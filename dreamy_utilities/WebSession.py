@@ -83,7 +83,20 @@ class WebSession:
         ##
 
         self._userAgent = userAgent
-        self._session = cloudscraper.CloudScraper() if cloudscraper else Session()
+
+        self.EnableCloudscraper(useCloudscraper)
+
+    def EnableCloudscraper(self, enable: bool = True):
+
+        ##
+        #
+        # Enables/disabled the cloudscraper. Resets the session.
+        #
+        # @param enable Enable the cloudscraper?
+        #
+        ##
+
+        self._session = cloudscraper.CloudScraper() if enable else Session()
 
     def Get(
         self,
