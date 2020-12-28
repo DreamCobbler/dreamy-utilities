@@ -39,6 +39,7 @@ from urllib.parse import urlparse
 
 # Non-standard packages.
 
+import cloudscraper
 from bs4 import BeautifulSoup
 import tldextract
 
@@ -61,64 +62,6 @@ DEFAULT_TEXT_ENCODING = "utf-8"
 #
 #
 
-def DownloadPage(
-    URL: str,
-    session: Optional[Session] = None,
-    userAgent: str = DEFAULT_USER_AGENT,
-    textEncoding: str = DEFAULT_TEXT_ENCODING
-) -> Optional[str]:
-
-    ##
-    #
-    # Downloads a webpage and returns its code.
-    #
-    # @param URL       The URL.
-    # @param session   The Session object to be used for the download.
-    # @param userAgent The User-Agent of the application.
-    #
-    # @return The code of the downloaded page. **None**, if an error has occurred.
-    #
-    ##
-
-    if not URL:
-        return None
-
-    headers = {
-        "User-Agent": userAgent
-    }
-
-    response = session.get(URL, headers = headers) if session else get(URL, headers = headers)
-    if not response:
-        return None
-
-    return Stringify(response.content, encoding = textEncoding)
-
-def DownloadSoup(
-    URL: str,
-    session: Optional[Session] = None,
-    parser: str = "html.parser",
-    userAgent: str = DEFAULT_USER_AGENT
-) -> Optional[BeautifulSoup]:
-
-    ##
-    #
-    # Downloads a webpage and returns it as a soup of tags.
-    #
-    # @param URL       The URL.
-    # @param session   The Session object to be used for the download.
-    # @param parser    The HTML parser to be used.
-    # @param userAgent The User-Agent of the application.
-    #
-    # @return The tag soup. **None**, if an error has occurred.
-    #
-    ##
-
-    code = DownloadPage(URL, session, userAgent)
-    if not code:
-        return None
-
-    return BeautifulSoup(code, parser)
-
 def GetHostname(URL: str) -> str:
 
     ##
@@ -130,7 +73,6 @@ def GetHostname(URL: str) -> str:
     # @return The hostname extracted from the input URL.
     #
     ##
-
 
     if not URL:
         return URL

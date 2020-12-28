@@ -60,6 +60,7 @@ setup(
     install_requires = [
         "babel",
         "bs4",
+        "cloudscraper",
         "colorama",
         "termtables",
         "titlecase",
