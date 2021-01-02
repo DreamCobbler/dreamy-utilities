@@ -1,3 +1,17 @@
+# 1.2.0
+
+**Interface:**
+
+- Added the *ReadString* and *ReadPassword* methods.
+
+**Web:**
+
+- Removed the *DownloadPage* and *DownloadSoup* functions.
+
+**WebSession:**
+
+- Implemented the *WebSession* class.
+
 # 1.1.0
 
 **Filesystem:**
